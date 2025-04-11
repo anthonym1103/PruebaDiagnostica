@@ -1,15 +1,14 @@
 import re
 import os
 
-
-def es_notacion_fen_valida(fen):
+def esNotacionFEM(fen):
     # Expresión regular para validar la parte de la posición del FEN
-    patron_posicion = re.compile(
+    patronPosicion = re.compile(
         r'^\s*([rnbqkpRNBQKP1-8]+\/){7}[rnbqkpRNBQKP1-8]+\s[wb]\s(-|K?Q?k?q?)\s(-|[a-h][1-8])\s\d+\s\d+\s*$'
     )
     
     # Verificar si coincide con el patrón
-    if not patron_posicion.match(fen):
+    if not patronPosicion.match(fen):
         return False
     
     # Dividir el FEN en sus partes principales
@@ -56,9 +55,9 @@ def es_notacion_fen_valida(fen):
     
     return True
 
-salir = True
+salir = False
 opcion = 0
-while(salir != False):
+while(salir != True):
     os.system('cls')
     print("Validacion de notacion FEM (Forsyth-Edwards Notation)")
     print("[1]. Evaluar una cadena  [2]. Salir")
@@ -71,14 +70,14 @@ while(salir != False):
     if (opcion == 1 ):
         os.system('cls')
         cadenaFEM = str(input("Ingrese la cadena a evaluar: ")) 
-        if (es_notacion_fen_valida(cadenaFEM)):
+        if (esNotacionFEM(cadenaFEM)):
             print(f"La cadena ''{cadenaFEM}''  si esta en notacion FEM")
         else:
             print(f"La cadena ''{cadenaFEM}''  no esta en notacion FEM")
 
         os.system('pause')
     elif (opcion == 2):
-        salir= False
+        salir= True
 
         
 
